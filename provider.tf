@@ -7,9 +7,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "my-terraform-state-bucket" #bucket name
+    bucket         = "terraform-state-bucket-101325" #bucket name
     key            = "tf-state" # path to state file within the bucket
-    region         = var.region
+    region         = "us-east-1"
     dynamodb_table = "terraform-locks" # dynamodb table to enable lock feature
     encrypt        = true
     use_lockfile   = true
