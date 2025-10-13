@@ -10,9 +10,9 @@ terraform {
     bucket         = "terraform-state-bucket-101325" #bucket name
     key            = "tf-state" # path to state file within the bucket
     region         = "us-east-1"
-    dynamodb_table = "terraform-locks" # dynamodb table to enable lock feature
+    # dynamodb_table = "terraform-locks" # dynamodb table to enable lock feature
     encrypt        = true
-    use_lockfile   = true
+    use_lockfile   = true # native to s3, can replace dynamodb for state locking
 }
 }
 
