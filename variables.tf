@@ -14,13 +14,13 @@ variable "vpc_cidr" {
 variable "priv_subnet_cidr" {
     description = "Private subnet CIDR block"
     type = string
-    default = [ "10.0.1.0/24" ]
+    default = "10.0.1.0/24" 
 }
 
 variable "pub_subnet_cidr" {
     description = "Public subnets CIDR block"
     type = string
-    default = [ "10.0.3.0/24" ]
+    default = "10.0.3.0/24" 
 }
 
 # ec2 module vars

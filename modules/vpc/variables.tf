@@ -39,19 +39,19 @@ variable "map_public_ip_on_launch" {
 variable "availability_zone" {
     description = "Availability zone to provision network infra"
     type = string
-    default = [ "us-east-1a" ]
+    default = "us-east-1a" 
 }
 
 variable "priv_subnet_cidr" {
     description = "Private subnet CIDR block"
     type = string
-    default = [ "10.0.1.0/24" ]
+    default = "10.0.1.0/24" 
 }
 
 variable "pub_subnet_cidr" {
     description = "Public subnets CIDR block"
     type = string
-    default = [ "10.0.3.0/24" ]
+    default = "10.0.3.0/24" 
 }
 
 variable "domain" {

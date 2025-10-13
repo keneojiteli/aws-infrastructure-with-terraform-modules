@@ -15,15 +15,3 @@ module "ec2" {
   pub_subnet_id = module.vpc.pub_subnet
 }
 
-# module "rds" {
-#   source = "./modules/db"
-#   id = var.id
-#   db_engine = var.db_engine
-#   db_eng_version = var.db_eng_version
-#   instance_class = var.instance_class
-#   storage = var.storage 
-#   db_username = var.db_username
-#   db_password = var.db_password
-#   db_name = var.db_name
-#   subnet_grp_name = var.subnet_grp_name
-# }
