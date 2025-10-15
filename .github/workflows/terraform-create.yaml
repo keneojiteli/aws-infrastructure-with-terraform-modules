@@ -28,6 +28,9 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
