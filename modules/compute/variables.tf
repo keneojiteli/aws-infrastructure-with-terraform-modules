@@ -29,4 +29,5 @@ variable "pub_subnet_id" {
 variable "sg_id" {
     description = "Security group for instance"
     type = list(string) 
+    # type = string
 }
