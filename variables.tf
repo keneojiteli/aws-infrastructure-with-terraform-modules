@@ -46,13 +46,13 @@ variable "instance_name" {
     default = "tf-instance" 
 }
 
-variable "pub_subnet_id" {
-    type = string
-}
+# variable "pub_subnet_id" {
+#     type = string
+# }
 
-variable "sg_id" {
-    type = string
-}
+# variable "sg_id" {
+#     type = string
+# }
 
 # # db module vars
 # variable "subnet_grp_name" {
