@@ -14,7 +14,6 @@ variable "vpc_name" {
 variable "vpc_cidr" {
     description = "CIDR block for the VPC"
     type = string
-    default = "10.0.0.0/16"
 }
 
 variable "enable_dns_hostnames" {
@@ -36,22 +35,32 @@ variable "map_public_ip_on_launch" {
     default = true   
 }
 
-variable "availability_zone" {
+variable "az" {
     description = "Availability zone to provision network infra"
-    type = string
-    default = "us-east-1a" 
+    type = list(string)
+    default = ["us-east-1a", "us-east-1b"] 
 }
 
 variable "priv_subnet_cidr" {
     description = "Private subnet CIDR block"
-    type = string
-    default = "10.0.1.0/24" 
+    type = list(string)
 }
 
 variable "pub_subnet_cidr" {
     description = "Public subnets CIDR block"
-    type = string
-    default = "10.0.3.0/24" 
+    type = list(string)
+}
+
+variable "priv_subnet" {
+    description = "Private subnets for high availability"
+    type = list(string)
+    default = [ "priv-subnet-1", "priv-subnet-2" ]
+}
+
+variable "pub_subnet" {
+    description = "Public subnets for high availability"
+    type = list(string)
+    default = [ "pub-subnet-1", "pub-subnet-2" ]
 }
 
 variable "domain" {

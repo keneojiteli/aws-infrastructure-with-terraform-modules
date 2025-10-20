@@ -1,7 +1,14 @@
+# general vars
 variable "region" {
    description = "Region for tf-project"
    type = string
    default = "us-east-1"
+}
+
+variable "az" {
+  description = "Availability zones"
+  type = list(string)
+  default = ["us-east-1a", "us-east-1b"]
 }
 
 # vpc module vars
@@ -13,14 +20,26 @@ variable "vpc_cidr" {
 
 variable "priv_subnet_cidr" {
     description = "Private subnet CIDR block"
-    type = string
-    default = "10.0.1.0/24" 
+    type = list(string)
+    default =  [ "10.0.5.0/24", "10.0.6.0/24" ]
 }
 
 variable "pub_subnet_cidr" {
     description = "Public subnets CIDR block"
-    type = string
-    default = "10.0.3.0/24" 
+    type = list(string)
+    default =  [ "10.0.3.0/24", "10.0.4.0/24" ]
+}
+
+variable "priv_subnet" {
+    description = "Private subnets for high availability"
+    type = list(string)
+    default = [ "priv-subnet-1", "priv-subnet-2" ]
+}
+
+variable "pub_subnet" {
+    description = "Public subnets for high availability"
+    type = list(string)
+    default = [ "pub-subnet-1", "pub-subnet-2" ]
 }
 
 # ec2 module vars
@@ -46,63 +65,57 @@ variable "instance_name" {
     default = "tf-instance" 
 }
 
-# variable "pub_subnet_id" {
-#     type = string
-# }
+# db module vars
+variable "subnet_grp_name" {
+  description = "Db subnet group name"
+  type = string
+  default = "db-subnet-group"
+}
 
-# variable "sg_id" {
-#     type = string
-# }
+variable "id" {
+  type = string
+  default = "postgres-db" 
+}
 
-# # db module vars
-# variable "subnet_grp_name" {
-#   description = "Db subnet group name"
-#   type = string
-# }
+variable "db_engine" {
+  description = "DB engine to use"
+  type = string
+  default = "postgres"
+}
 
-# variable "id" {
-#   type = string
-#   default = "postgres-db" 
-# }
+variable "db_eng_version" {
+  description = "DB engine supported version to use"
+  type = string
+  default = "16.6"
+}
 
-# variable "db_engine" {
-#   description = "DB engine to use"
-#   type = string
-#   default = "postgres"
-# }
+variable "instance_class" {
+  description = "Instance class of the DB instance"
+  type = string
+  default = "db.t4g.micro"
+}
 
-# variable "db_eng_version" {
-#   description = "DB engine supported version to use"
-#   type = string
-#   default = "16.6"
-# }
+variable "storage" {
+  description = "Allocated storage in gibibytes"
+  type = number
+  default = 20
+}
 
-# variable "instance_class" {
-#   description = "Instance class of the DB instance"
-#   type = string
-#   default = "db.t4g.micro"
-# }
+variable "db_username" {
+  description = "RDS database username"
+  type        = string 
+  default = "terraform-proj-user" 
+}
 
-# variable "storage" {
-#   description = "Allocated storage in gibibytes"
-#   type = number
-#   default = 20
-# }
+variable "db_password" {
+  description = "RDS database password"
+  type        = string
+  # sensitive = true
+  default = "password"
+}
 
-# variable "db_username" {
-#   description = "RDS database username"
-#   type        = string 
-#   default = "terraform-proj-user" 
-# }
-
-# variable "db_password" {
-#   description = "RDS database password"
-#   type        = string
-#   sensitive = true
-# }
-
-# variable "db_name" {
-#   description = "RDS database name"
-#   type        = string
-#   default = "terraform-proj-db"
-# }
+variable "db_name" {
+  description = "RDS database name"
+  type        = string
+  default = "terraform-proj-db"
+}

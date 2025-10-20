@@ -23,7 +23,7 @@ variable "instance_name" {
 
 variable "pub_subnet_id" {
     description = "Subnet where EC2 will be provisioned: public subnet"
-    type = string
+    type = list(string)
 }
 
 variable "sg_id" {
