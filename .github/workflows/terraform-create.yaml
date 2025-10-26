@@ -1,12 +1,12 @@
 name: Automate terraform operations with GHA 
 
+#  push to main branch triggers workflow
 on:
   push:
     branches:
       - main
-    # paths-ignore:
-    #   - "README.md"
-    #   - .gitignore
+    paths-ignore:
+      - "README.md"
 
 jobs:
   terraform:
@@ -30,20 +30,24 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-
+      # connects to s3 backend
       - name: Terraform Init
         run: terraform init
 
+      # formats my code to respect best practices
       - name: Terraform Format Check
         run: terraform fmt -recursive
 
+      # verify the correctness of terraform config files
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
 
+      # checks what changes will occur
       - name: Terraform Plan
         run: terraform plan -input=false -no-color -lock-timeout=5m -out=tfplan
 
+      # Provisions infrastructure
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve

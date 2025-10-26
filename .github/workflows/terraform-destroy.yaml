@@ -1,5 +1,6 @@
 name: Destroy terraform resources with GHA 
 
+# triggered manually for cleanup
 on:
   workflow_dispatch:
 

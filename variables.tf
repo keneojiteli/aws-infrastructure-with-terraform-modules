@@ -56,7 +56,6 @@ variable "instance_type" {
 variable "key_name" {
     type = string 
     default = "kene-devops-key"
-  
 }
 
 variable "instance_name" {
@@ -69,7 +68,7 @@ variable "instance_name" {
 variable "subnet_grp_name" {
   description = "Db subnet group name"
   type = string
-  default = "db-subnet-group"
+  default = "subnet-group-db-001"
 }
 
 variable "id" {
@@ -104,18 +103,17 @@ variable "storage" {
 variable "db_username" {
   description = "RDS database username"
   type        = string 
-  default = "terraform-proj-user" 
+  default = "terraformprojuser" 
 }
 
 variable "db_password" {
   description = "RDS database password"
   type        = string
-  # sensitive = true
-  default = "password"
+  sensitive = true
 }
 
 variable "db_name" {
   description = "RDS database name"
   type        = string
-  default = "terraform-proj-db"
+  default = "terraformprojdb"
 }

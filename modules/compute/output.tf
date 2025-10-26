@@ -3,3 +3,4 @@ output "instance_pub_ip"{
     value = aws_instance.instance[0].public_ip
     # value = [for i in aws_instance.instance : i.public_ip]
 }
+

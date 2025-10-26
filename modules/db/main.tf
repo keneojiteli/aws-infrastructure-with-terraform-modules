@@ -1,8 +1,7 @@
 # provides an RDS DB subnet group resource (private subnet), a single resource that can take multiple subnets
 resource "aws_db_subnet_group" "db_subnet_group" {
   name       = var.subnet_grp_name
-  count =  length(var.priv_subnet)
-  subnet_ids = var.priv_subnet[*] # child/child dependency
+  subnet_ids = var.priv_subnet # child/child dependency, expects a list of subnet IDs
 
   tags = {
     Name = var.subnet_grp_name
@@ -18,7 +17,7 @@ resource "aws_db_instance" "my_db" {
   instance_class          = var.instance_class
   allocated_storage       = var.storage
   storage_type            = "gp2"
-  db_subnet_group_name    = aws_db_subnet_group.db_subnet_group[count.index].name
+  db_subnet_group_name    = aws_db_subnet_group.db_subnet_group.name
   vpc_security_group_ids  = var.sg # child/child dependency
   username                = var.db_username
   password                = var.db_password
