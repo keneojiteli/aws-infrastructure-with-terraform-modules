@@ -53,12 +53,14 @@ The key focus areas include:
 ## CI/CD Automation with GitHub Actions
 This project uses GitHub Actions to automate Terraform workflows for provisioning (apply) and destruction (destroy) in a consistent and secure manner. The workflows can be found in the `.github/workflows` directory in the root directory. The pipeline features include: configuring AWS credentials, setting up Terraform, Terraform initialization, linting, validation, and plan checks before apply and manual trigger for destruction (preventing accidental deletions).
 
-## Best Practices followed
+## Best Practices I followed
 - I ensured each module focused on an AWS service (for example, VPC module contained everything required to build the VPC).
 - I exposed only necessary outputs (especially the ones that will e required by other modules and passed to the root module, which is the connector).
 - I parameterised my attributes and passed the values using variables (a`.tfvars` file can also be used to pass values).
 - I added descriptions and defaults where needed to variables and outputs.
 
+## Project Documentation
+Project documentation can be found on [Hashnode](https://keneojiteli.hashnode.dev/automating-infrastructure-provisioning-with-terraform-aws-s3-remote-backend-and-github-actions) and [Dev.to](https://dev.to/keneojiteli/automating-infrastructure-provisioning-with-terraform-aws-s3-remote-backend-and-github-actions-2k5b)
 
 
 
